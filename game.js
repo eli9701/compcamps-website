@@ -16,6 +16,8 @@ var secondDiv = document.querySelector('.second');
 first.addEventLisener('click',function()  {
 if(firstDiv.value < secondDiv.value){
   count++;
+  console.log(count);
+  setItems();
 }else{
     console.log("WRONG");
 }
@@ -24,8 +26,9 @@ if(firstDiv.value < secondDiv.value){
 
     second.addEventLisener('click',function() {
     if(firstDiv.value > secondDiv.value){
-
       count++;
+      console.log(count);
+      setItems();
     } else {
         console.log("WRONG");
 
@@ -40,6 +43,23 @@ if(firstDiv.value < secondDiv.value){
 function setItems(){
   function rand(first){
     var i = Math.floor(Math.random()*(item.length));
+    if(i == first) {
+      rand(first);
+  }else {
+
+    return i;
+
+  }
   }
 
+  var i = rand  ();
+  firstDiv.value = item[i].value;
+  firstDiv.innertext = item[i].name;
+  var j = rand(i);
+  secondDiv.value = items[j].value;
+  secondDiv.value = items[j].value;
+
+
 }
+
+setItems();
